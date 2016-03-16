@@ -1,0 +1,1 @@
+In this app I added the following directives on the page ng-bind; ng-model; ng-repeat; ng-repeat (w/ filter); ng-if; ng-hide; ng-show; ng-init; ng-click. User is able to add foods and filter through foods. 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+  <meta charset="UTF-8">
+  <title>1controller</title>
+ <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'/></script>
+  <script type="text/javascript" charset="utf-8">
+    var myAppModule = angular.module('myApp', [])
+      // the .controller() method adds a controller to the module
+
+    myAppModule.controller('foodController', function ($scope){
+          $scope.foods = []; 
+   
+          $scope.addFood = function(){ 
+            console.log($scope.newFood);
+            $scope.foods.push($scope.newFood);
+            console.log($scope.foods)
+            $scope.newFood = null;
+          }
+
+      });
+  </script>
+</head>
+<body>
+<div ng-controller='foodController'>
+
+  <label for="food">Food</label>
+  <!-- ng-blur will submit the input when clicked out of the textbox -->
+  <input type="text" ng-model = "newFood.name" placeholder="food" ng-blur="addFood()()">
+  <!-- ng-bind wil show what the user is typing  -->
+  <p><b>action:</b><span ng-bind='newFood.name'></span></p>
+
+
+  <h2>List of foods</h2>
+  <!-- will loop through foods to and display them -->
+   <ul> 
+    <li id="list" ng-repeat='food in foods track by $index'> {{food.name}}</li>
+    </ul>
+  <!-- will show foods and filler them by name  -->
+  
+  <input type="text" ng-model='filter_name' placeholder="Filter">
+  <ul>
+  <li ng-repeat = "x in foods | filter: filter_name | orderBy: 'name'">{{x.name}}</li>
+  </ul>
+</div>  
+
+</body>
+</html>
+
